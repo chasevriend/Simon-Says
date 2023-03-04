@@ -1,19 +1,18 @@
 //data structures
-const buttonColors = [
-    "red",
-    "yellow",
-    "green",
-    "blue"
-];
+var buttonColors = ["red", "blue", "green", "yellow"];
 
-const gamePattern = [];
+var gamePattern = [];
 
-//function to determine the next sequence
 function nextSequence() {
-    const randomChosenColor = buttonColors[Math.floor(Math.random()*buttonColors.length)];
-    gamePattern.push(randomChosenColor);
-    console.log(gamePattern);
-}
 
-//call the function to action
-nextSequence();
+  var randomNumber = Math.floor(Math.random() * 4);
+  var randomChosenColor = buttonColors[randomNumber];
+  gamePattern.push(randomChosenColor);
+
+  //use the random chosen color and find it's ID
+  $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100);
+
+  //play audio
+  var audio = new Audio("sounds/" + randomChosenColor + ".mp3");
+  audio.play();
+}
